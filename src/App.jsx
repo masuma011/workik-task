@@ -14,7 +14,7 @@ function App() {
             <button onClick={handleLogin} style={styles.button}>
                 Connect GitHub
             </button>
-            <p>Made changes</p>
+            <p>Made changes for different branch</p>
         </div>
     );
 }
