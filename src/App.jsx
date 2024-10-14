@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import './App.css'
 
@@ -8,13 +8,32 @@ function App() {
         window.location.href = 'http://localhost:4000/auth/github';
     };
 
+    const checkLoginStatus = async () => {
+        const response = await fetch('http://localhost:4000/api/user/status', {
+            method: 'GET',
+            credentials: 'include' // Ensure cookies are sent if needed
+        });
+        const data = await response.json();
+        if (data.loggedIn) {
+            // Handle logged-in state
+            console.log('User is logged in');
+        } else {
+            // Handle not logged in state
+            console.log('User is not logged in');
+        }
+    };
+
+    useEffect(() => {
+        checkLoginStatus(); // Call the function on component mount
+    }, []); 
+    
+
     return (
         <div className="App">
             <h1>Automatic PR Review System</h1>
             <button onClick={handleLogin} style={styles.button}>
                 Connect GitHub
             </button>
-            <p>Made changes for different branch!!</p>
         </div>
     );
 }
