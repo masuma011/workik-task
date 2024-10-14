@@ -34,6 +34,7 @@ function App() {
             <button onClick={handleLogin} style={styles.button}>
                 Connect GitHub
             </button>
+            {/* <h1>hello</h1> */}
         </div>
     );
 }
